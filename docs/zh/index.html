@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>砖纹袈裟 · 信仰的现代传承</title>
+<meta name="description" content="从大唐玄奘的砖纹袈裟，到现代手艺人复刻于手机壳上的砖纹——千年执着，以新潮模样融入当代人的生活褶皱。">
+<style>
+  :root{
+    --clay-900:#4a1f14;
+    --clay-800:#6b2d1b;
+    --clay-700:#8c3a20;
+    --clay-600:#b04a26;
+    --clay-500:#c65a30;
+    --clay-400:#d97a4e;
+    --clay-300:#e5a279;
+    --sand-100:#fdf8f1;
+    --sand-200:#f7ecdd;
+    --sand-300:#eddcc4;
+    --sand-400:#dfc6a4;
+    --rope:#d8bf94;
+    --ink:#2f1d15;
+    --ink-soft:#5a4436;
+    --ink-faint:#8a7263;
+    --gold:#b8873f;
+    --radius:18px;
+    --shadow-sm:0 2px 6px rgba(74,31,20,.06), 0 8px 24px rgba(74,31,20,.05);
+    --shadow-lg:0 10px 30px rgba(74,31,20,.10), 0 30px 70px rgba(74,31,20,.10);
+    --serif:"Songti SC","STSong","Source Han Serif SC","Noto Serif SC","SimSun",Georgia,serif;
+    --sans:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.9;
+    background-color:var(--sand-100);
+    background-image:
+      radial-gradient(circle at 12% 0%, rgba(217,122,78,.16), transparent 45%),
+      radial-gradient(circle at 92% 8%, rgba(184,135,63,.14), transparent 40%),
+      radial-gradient(circle at 50% 100%, rgba(140,58,32,.08), transparent 55%);
+    background-attachment:fixed;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  /* ---------- 砖纹背景肌理 ---------- */
+  .brick-veil{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    opacity:.5;
+    -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,.15) 45%, transparent 75%);
+            mask-image:linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,.15) 45%, transparent 75%);
+  }
+  .brick-veil span{
+    position:absolute;
+    top:0;left:0;right:0;
+    height:100%;
+    background-image:
+      /* 砖块 */
+      repeating-linear-gradient(90deg,
+        rgba(176,74,38,.13) 0 66px,
+        rgba(216,191,148,.20) 66px 74px),
+      /* 砖层 */
+      repeating-linear-gradient(180deg,
+        rgba(176,74,38,.11) 0 26px,
+        rgba(216,191,148,.26) 26px 32px);
+    background-size:148px 64px, 148px 64px;
+    background-position:0 0, 0 0;
+  }
+  .brick-veil span:nth-child(2){
+    /* 交错排布（顺砖砌法）：第二层半砖错位，叠出砖缝错落感 */
+    background-position:74px 32px, 74px 32px;
+  }
+  .brick-veil::after{
+    content:"";
+    position:absolute;inset:0;
+    background:linear-gradient(to bottom, transparent 30%, var(--sand-100) 92%);
+  }
+
+  /* ---------- 布局 ---------- */
+  .page{
+    position:relative;
+    z-index:1;
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 24px 72px;
+  }
+
+  /* ---------- 顶部 ---------- */
+  header.masthead{
+    padding:64px 0 28px;
+    text-align:center;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:12px;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--clay-600);
+    font-weight:600;
+    margin-bottom:22px;
+  }
+  .eyebrow::before,
+  .eyebrow::after{
+    content:"";
+    width:34px;height:1px;
+    background:linear-gradient(90deg, transparent, var(--clay-400));
+  }
+  .eyebrow::after{background:linear-gradient(270deg, transparent, var(--clay-400));}
+
+  h1.title{
+    font-family:var(--serif);
+    font-weight:700;
+    margin:0;
+    color:var(--clay-900);
+    letter-spacing:.03em;
+    line-height:1.25;
+    text-shadow:0 1px 0 rgba(255,255,255,.7);
+  }
+  h1.title .l1{
+    display:block;
+    font-size:clamp(44px, 8vw, 92px);
+  }
+  h1.title .l2{
+    display:block;
+    margin-top:.34em;
+    font-size:clamp(17px, 2.6vw, 27px);
+    font-weight:500;
+    color:var(--clay-600);
+    letter-spacing:.14em;
+  }
+  .title-rule{
+    width:92px;height:3px;
+    margin:34px auto 0;
+    border-radius:9px;
+    background:linear-gradient(90deg, var(--clay-300), var(--clay-600), var(--clay-300));
+  }
+  .lede{
+    font-family:var(--serif);
+    max-width:640px;
+    margin:22px auto 0;
+    font-size:15.5px;
+    color:var(--ink-faint);
+    letter-spacing:.06em;
+  }
+
+  /* ---------- 主体 ---------- */
+  .layout{
+    display:grid;
+    grid-template-columns:minmax(300px, 400px) minmax(0, 1fr);
+    gap:56px;
+    align-items:start;
+    margin-top:56px;
+  }
+
+  /* 图片卡 */
+  .showcase{position:sticky; top:40px;}
+
+  .phone-card{
+    position:relative;
+    border-radius:var(--radius);
+    padding:30px 26px;
+    background:
+      radial-gradient(circle at 50% 30%, #ffffff 0%, #fbf6ef 55%, #f0e4d4 100%);
+    box-shadow:var(--shadow-lg);
+    border:1px solid rgba(176,74,38,.12);
+    overflow:hidden;
+  }
+  .phone-card::before{
+    content:"";
+    position:absolute;inset:0;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(176,74,38,.05) 0 28px, rgba(216,191,148,.16) 28px 32px),
+      repeating-linear-gradient(180deg, rgba(176,74,38,.04) 0 12px, rgba(216,191,148,.18) 12px 15px);
+    background-size:64px 27px, 64px 27px;
+    opacity:.65;
+    pointer-events:none;
+  }
+  .phone-card picture{display:block;position:relative;}
+  .phone-card img{
+    position:relative;
+    display:block;
+    width:100%;
+    height:auto;
+    border-radius:10px;
+    filter:drop-shadow(0 18px 26px rgba(74,31,20,.18));
+    cursor:zoom-in;
+    transition:transform .5s cubic-bezier(.2,.7,.3,1);
+  }
+  .phone-card img:hover{transform:translateY(-6px) scale(1.012);}
+
+  figure{margin:0;}
+  figcaption{
+    margin-top:20px;
+    text-align:center;
+    font-size:12.5px;
+    letter-spacing:.16em;
+    color:var(--ink-faint);
+    position:relative;
+  }
+  figcaption b{
+    display:block;
+    font-family:var(--serif);
+    font-size:14px;
+    letter-spacing:.2em;
+    color:var(--clay-700);
+    font-weight:600;
+    margin-bottom:4px;
+  }
+
+  /* 章节小标签 */
+  .chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+    margin-top:22px;
+    position:relative;
+  }
+  .chip{
+    font-size:11.5px;
+    letter-spacing:.1em;
+    padding:5px 12px;
+    border-radius:99px;
+    color:var(--clay-800);
+    background:rgba(255,255,255,.72);
+    border:1px solid rgba(176,74,38,.18);
+    backdrop-filter:blur(4px);
+  }
+
+  /* 正文 */
+  article.prose{
+    font-family:var(--serif);
+    font-size:17.5px;
+    line-height:2.15;
+    color:var(--ink);
+  }
+  article.prose p{
+    margin:0 0 1.5em;
+    text-align:justify;
+    text-justify:inter-ideograph;
+  }
+  article.prose p:first-of-type{
+    font-size:19px;
+    color:var(--clay-900);
+  }
+  article.prose p:first-of-type::first-letter{
+    float:left;
+    font-size:3.5em;
+    line-height:.86;
+    margin:.08em .12em 0 0;
+    color:var(--clay-500);
+    font-weight:700;
+  }
+  .verse{
+    font-family:var(--serif);
+    color:var(--clay-700);
+    letter-spacing:.1em;
+    font-size:16.5px;
+    line-height:2.3;
+    margin:0 0 1.5em;
+    padding:18px 22px 18px 26px;
+    border-left:3px solid var(--clay-400);
+    border-radius:0 12px 12px 0;
+    background:linear-gradient(90deg, rgba(217,122,78,.10), rgba(217,122,78,0));
+  }
+  .divider{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:2.2em 0;
+    color:var(--clay-400);
+  }
+  .divider::before,
+  .divider::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(176,74,38,.28), transparent);
+  }
+  .divider i{
+    font-style:normal;
+    font-size:13px;
+    letter-spacing:.4em;
+    color:var(--clay-500);
+  }
+
+  /* 收尾引文 */
+  .coda{
+    margin-top:64px;
+    padding:46px 32px;
+    border-radius:var(--radius);
+    text-align:center;
+    position:relative;
+    background:
+      linear-gradient(150deg, rgba(140,58,32,.96), rgba(176,74,38,.94) 45%, rgba(198,90,48,.94));
+    color:#fdf3e8;
+    box-shadow:var(--shadow-lg);
+    overflow:hidden;
+  }
+  .coda::before{
+    content:"";
+    position:absolute;inset:0;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(255,255,255,.055) 0 44px, rgba(255,255,255,.10) 44px 50px),
+      repeating-linear-gradient(180deg, rgba(255,255,255,.05) 0 20px, rgba(255,255,255,.11) 20px 25px);
+    background-size:100px 50px, 100px 50px;
+    opacity:.9;
+    pointer-events:none;
+  }
+  .coda > *{position:relative;}
+  .coda .mark{
+    font-family:var(--serif);
+    font-size:34px;
+    color:var(--rope);
+    line-height:1;
+    margin-bottom:14px;
+    letter-spacing:.2em;
+  }
+  .coda p{
+    font-family:var(--serif);
+    margin:0 auto;
+    max-width:760px;
+    font-size:clamp(17px, 2.4vw, 23px);
+    line-height:2;
+    letter-spacing:.08em;
+    text-shadow:0 1px 2px rgba(0,0,0,.18);
+  }
+
+  footer.colophon{
+    margin-top:56px;
+    padding-top:26px;
+    border-top:1px solid rgba(176,74,38,.18);
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px 26px;
+    justify-content:space-between;
+    align-items:center;
+    font-size:12.5px;
+    color:var(--ink-faint);
+    letter-spacing:.08em;
+  }
+  footer.colophon a{
+    color:var(--clay-600);
+    text-decoration:none;
+    border-bottom:1px dashed rgba(176,74,38,.4);
+  }
+  footer.colophon a:hover{color:var(--clay-800);}
+
+  /* 回到顶部 */
+  .to-top{
+    position:fixed;
+    right:24px;bottom:26px;
+    z-index:20;
+    width:46px;height:46px;
+    border-radius:50%;
+    border:1px solid rgba(176,74,38,.25);
+    background:rgba(253,248,241,.88);
+    backdrop-filter:blur(8px);
+    color:var(--clay-700);
+    font-size:17px;
+    line-height:1;
+    cursor:pointer;
+    box-shadow:var(--shadow-sm);
+    opacity:0;
+    transform:translateY(12px);
+    pointer-events:none;
+    transition:opacity .3s, transform .3s, background .2s;
+  }
+  .to-top.show{opacity:1;transform:translateY(0);pointer-events:auto;}
+  .to-top:hover{background:#fff;}
+
+  /* 图片放大层 */
+  .lightbox{
+    position:fixed;inset:0;z-index:50;
+    display:none;
+    align-items:center;justify-content:center;
+    padding:32px;
+    background:rgba(47,29,21,.86);
+    backdrop-filter:blur(6px);
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img{
+    max-width:min(92vw, 620px);
+    max-height:88vh;
+    width:auto;height:auto;
+    border-radius:14px;
+    box-shadow:0 30px 80px rgba(0,0,0,.5);
+    background:#fff;
+  }
+  .lightbox .close{
+    position:absolute;top:22px;right:26px;
+    width:42px;height:42px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.35);
+    background:rgba(255,255,255,.12);
+    color:#fff;font-size:20px;line-height:1;
+    cursor:pointer;
+  }
+  .lightbox .close:hover{background:rgba(255,255,255,.24);}
+
+  /* ---------- 响应式 ---------- */
+  @media (max-width:900px){
+    .layout{
+      grid-template-columns:1fr;
+      gap:40px;
+      margin-top:40px;
+    }
+    .showcase{position:static;}
+    .phone-card{max-width:380px;margin:0 auto;}
+    header.masthead{padding:44px 0 18px;}
+    article.prose{font-size:17px;line-height:2.05;}
+    article.prose p:first-of-type{font-size:18px;}
+    .coda{padding:36px 22px;margin-top:48px;}
+    .page{padding:0 18px 56px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+
+  /* ---------- 打印 ---------- */
+  @media print{
+    body{background:#fff;background-image:none;line-height:1.8;}
+    .brick-veil,.to-top,.lightbox,.chips{display:none !important;}
+    .page{max-width:none;padding:0;}
+    .layout{grid-template-columns:1fr;gap:24px;margin-top:24px;}
+    .showcase{position:static;}
+    .phone-card{box-shadow:none;border:1px solid #ddd;padding:12px;max-width:280px;margin:0 auto;}
+    .coda{background:#f4e7db !important;color:#4a1f14;box-shadow:none;}
+    .coda::before{display:none;}
+    .coda p{text-shadow:none;font-size:15px;}
+    article.prose{font-size:12pt;}
+    footer.colophon{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="brick-veil" aria-hidden="true"><span></span><span></span></div>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">图文作品</div>
+    <h1 class="title">
+      <span class="l1">砖纹袈裟</span>
+      <span class="l2">手机壳里的信仰的现代传承</span>
+    </h1>
+    <div class="title-rule"></div>
+    <p class="lede">一袭穿越千年的袈裟纹路，落在掌心的方寸之间。</p>
+  </header>
+
+  <main class="layout">
+
+    <!-- 图片 -->
+    <section class="showcase" aria-label="图片">
+      <figure class="phone-card">
+        <picture>
+          <source srcset="assets/phone-case.jpg" type="image/jpeg">
+          <img id="caseImg" src="assets/phone-case.png"
+               alt="砖纹袈裟主题手机壳：橘红色砖块纹样与米色麻绳编织纹交错，正面为黑色圆形摄像模组"
+               width="889" height="1087">
+        </picture>
+        <figcaption>
+          <b>砖纹袈裟 · 手机壳</b>
+          点击图片可放大查看
+        </figcaption>
+      </figure>
+      <div class="chips" aria-label="关键词">
+        <span class="chip">玄奘</span>
+        <span class="chip">砖纹</span>
+        <span class="chip">袈裟</span>
+        <span class="chip">现代工艺</span>
+        <span class="chip">信仰传承</span>
+      </div>
+    </section>
+
+    <!-- 文字 -->
+    <article class="prose">
+
+      <p>大唐贞观年间，玄奘法师踏上西行取经路。那袭袈裟伴他穿荒漠、越雪山，经九九八十一难。袈裟上的纹路，似被岁月与佛光晕染，每道褶皱里，都藏着风沙蚀刻的故事。行至莫贺延碛，黄沙漫天，天地似被混沌吞噬。玄奘迷失方向，干渴与绝望如毒蛇缠心。</p>
+
+      <p>恍惚间，袈裟纹路竟泛出微光，化作层层叠叠的“砖路”，在沙海延伸。他循着光，一步一叩，那砖纹似有魔力，每踏一步，疲惫便消几分，指引他寻到绿洲，续了取经途。这纹路，成了荒漠里的希望符，是信念凝成的光。干年后，一位手艺人痴迷玄奘故事。</p>
+
+      <div class="verse">
+        偶然间，他端详旧寺壁画里的袈裟，<br>
+        那砖般的纹路，瞬间让他看见时光流淌的轨迹——<br>
+        从玄奘的执着，到后世对信仰的仰望。
+      </div>
+
+      <p>灵感乍现，他以现代工艺，将砖纹复刻于手机壳。当这手机壳问世，拿到它的人，指尖触碰纹路，似能触到千年前的风沙。</p>
+
+      <div class="divider" role="presentation"><i>砖纹 · 摩挲</i></div>
+
+      <p>年轻人在通勤地铁上，握着手机壳，被催单的焦虑，方案被否的挫败，在砖纹的摩掌中，化作玄奘踏沙的坚毅；创业者深夜改计划书，手机壳的砖纹，是荒漠里的指引，让他想起取经人从未言弃，咬咬牙再熬一轮。</p>
+
+      <p>有旅人带着这手机壳走在异国，遭遇语言不通、路线难寻，看着砖纹，想起玄奘孤身涉险，便鼓起勇气用手势、翻译软件沟通，终寻得美景与温暖；学生备考至崩溃，摩挲砖纹，悟到取经需日积跬步，重新坐回书桌，把难题当“劫数”逐个攻克。</p>
+
+      <p>这砖纹手机壳，成了玄奘精神的现代载体。</p>
+
+      <p>从古老袈裟到小小壳面，是信念的跨越时空。它让千年的执着，以新潮模样，融入当代人的生活褶皱，提醒着：无论何时，只要心怀信仰，循着内心的“砖纹指引”，每个人都能在自己的“取经路”上，走出属于自己的光芒，让玄奘的故事，在岁岁年年里，不断书写新的传承。</p>
+
+    </article>
+  </main>
+
+  <section class="coda" aria-label="结语">
+    <div class="mark">❖</div>
+    <p>无论何时，只要心怀信仰，循着内心的“砖纹指引”，<br>每个人都能在自己的“取经路”上，走出属于自己的光芒。</p>
+  </section>
+
+  <footer class="colophon">
+    <span>《砖纹袈裟：手机壳里的信仰的现代传承》· 图文展示</span>
+    <span>图片来源：原始文档 <a href="assets/phone-case.png" download="砖纹袈裟-手机壳.png">下载高清原图</a></span>
+  </footer>
+
+</div>
+
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部">↑</button>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="查看大图">
+  <button class="close" id="lightboxClose" type="button" aria-label="关闭">✕</button>
+  <img src="assets/phone-case.png" alt="砖纹袈裟主题手机壳大图"></div>
+
+<script>
+  (function(){
+    var img = document.getElementById('caseImg');
+    var box = document.getElementById('lightbox');
+    var closeBtn = document.getElementById('lightboxClose');
+    var toTop = document.getElementById('toTop');
+
+    function openBox(){ box.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeBox(){ box.classList.remove('open'); document.body.style.overflow = ''; }
+
+    img.addEventListener('click', openBox);
+    closeBtn.addEventListener('click', closeBox);
+    box.addEventListener('click', function(e){ if(e.target === box) closeBox(); });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && box.classList.contains('open')) closeBox();
+    });
+
+    function onScroll(){
+      if(window.scrollY > 400){ toTop.classList.add('show'); }
+      else { toTop.classList.remove('show'); }
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+
+    toTop.addEventListener('click', function(){
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  })();
+</script>
+
+</body>
+</html>

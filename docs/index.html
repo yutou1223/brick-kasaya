@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>砖纹袈裟 · The Brick-Pattern Kasaya</title>
+<meta name="description" content="扫码后按手机系统语言自动进入中文版或英文版页面：系统语言为中文则打开中文版，其余语言打开英文版。">
+<link rel="canonical" href="https://yutou1223.github.io/brick-kasaya/">
+<!-- 无 JavaScript 时的兜底：直接进入英文版 -->
+<noscript><meta http-equiv="refresh" content="2; url=en/"></noscript>
+<style>
+  :root{
+    --clay-900:#4a1f14;
+    --clay-700:#8c3a20;
+    --clay-600:#b04a26;
+    --clay-500:#c65a30;
+    --clay-400:#d97a4e;
+    --clay-300:#e5a279;
+    --sand-100:#fdf8f1;
+    --sand-300:#eddcc4;
+    --rope:#d8bf94;
+    --ink:#2f1d15;
+    --ink-faint:#8a7263;
+    --radius:18px;
+    --serif:"Songti SC","STSong","Source Han Serif SC","Noto Serif SC","SimSun","Charter",Georgia,serif;
+    --sans:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Noto Sans SC","Segoe UI",-apple-system,BlinkMacSystemFont,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px 20px;
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.8;
+    text-align:center;
+    background-color:var(--sand-100);
+    background-image:
+      radial-gradient(circle at 12% 0%, rgba(217,122,78,.16), transparent 45%),
+      radial-gradient(circle at 92% 8%, rgba(184,135,63,.14), transparent 40%),
+      radial-gradient(circle at 50% 100%, rgba(140,58,32,.08), transparent 55%);
+    -webkit-font-smoothing:antialiased;
+  }
+  .brick-veil{
+    position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+    -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,.15) 45%, transparent 75%);
+            mask-image:linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,.15) 45%, transparent 75%);
+  }
+  .brick-veil span{
+    position:absolute;top:0;left:0;right:0;height:100%;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(176,74,38,.13) 0 66px, rgba(216,191,148,.20) 66px 74px),
+      repeating-linear-gradient(180deg, rgba(176,74,38,.11) 0 26px, rgba(216,191,148,.26) 26px 32px);
+    background-size:148px 64px, 148px 64px;
+  }
+  .brick-veil span:nth-child(2){background-position:74px 32px, 74px 32px;}
+
+  .card{
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:560px;
+    padding:44px 34px 36px;
+    border-radius:var(--radius);
+    background:radial-gradient(circle at 50% 0%, #ffffff 0%, #fbf6ef 55%, #f2e7d8 100%);
+    border:1px solid rgba(176,74,38,.14);
+    box-shadow:0 10px 30px rgba(74,31,20,.10), 0 30px 70px rgba(74,31,20,.10);
+    overflow:hidden;
+  }
+  .card::before{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.6;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(176,74,38,.05) 0 28px, rgba(216,191,148,.16) 28px 32px),
+      repeating-linear-gradient(180deg, rgba(176,74,38,.04) 0 12px, rgba(216,191,148,.18) 12px 15px);
+    background-size:64px 27px, 64px 27px;
+  }
+  .card > *{position:relative;}
+
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--clay-600);font-weight:600;margin-bottom:20px;
+  }
+  .eyebrow::before,.eyebrow::after{content:"";width:28px;height:1px;background:linear-gradient(90deg,transparent,var(--clay-400));}
+  .eyebrow::after{background:linear-gradient(270deg,transparent,var(--clay-400));}
+
+  .mark{
+    width:54px;height:54px;margin:0 auto 18px;
+    border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(150deg, var(--clay-600), var(--clay-400));
+    color:#fdf3e8;font-size:24px;font-weight:700;
+    font-family:var(--serif);
+    box-shadow:0 8px 18px rgba(176,74,38,.28);
+  }
+
+  h1{
+    font-family:var(--serif);
+    margin:0;
+    font-size:clamp(24px, 5vw, 34px);
+    line-height:1.3;
+    color:var(--clay-900);
+    letter-spacing:.02em;
+  }
+  h1 .sub{
+    display:block;
+    margin-top:.45em;
+    font-size:clamp(13px, 2.4vw, 16px);
+    font-weight:500;
+    letter-spacing:.08em;
+    color:var(--clay-600);
+    font-family:var(--sans);
+  }
+  .title-rule{width:74px;height:3px;margin:24px auto;border-radius:9px;background:linear-gradient(90deg,var(--clay-300),var(--clay-600),var(--clay-300));}
+
+  .status{
+    font-size:14px;
+    color:var(--ink-faint);
+    margin:0 0 6px;
+    letter-spacing:.04em;
+  }
+  .status b{color:var(--clay-700);font-weight:600;}
+  .bar{
+    height:4px;width:100%;max-width:260px;margin:20px auto 4px;
+    border-radius:99px;background:rgba(176,74,38,.14);overflow:hidden;
+  }
+  .bar i{
+    display:block;height:100%;width:0;
+    border-radius:99px;
+    background:linear-gradient(90deg,var(--clay-500),var(--clay-300));
+    animation:load 1.4s ease-in-out forwards;
+  }
+  @keyframes load{from{width:0}to{width:100%}}
+
+  .choice{margin-top:30px;}
+  .choice p{
+    font-size:12px;letter-spacing:.14em;color:var(--ink-faint);
+    margin:0 0 14px;text-transform:uppercase;
+  }
+  .buttons{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
+  .btn{
+    flex:1 1 190px;
+    min-width:170px;
+    display:block;
+    padding:14px 18px;
+    border-radius:12px;
+    text-decoration:none;
+    font-size:14.5px;
+    letter-spacing:.04em;
+    border:1px solid rgba(176,74,38,.28);
+    background:rgba(255,255,255,.75);
+    color:var(--clay-800,#6b2d1b);
+    transition:transform .25s, box-shadow .25s, background .2s;
+  }
+  .btn b{display:block;font-size:15.5px;font-weight:600;font-family:var(--serif);letter-spacing:.06em;}
+  .btn small{display:block;font-size:11.5px;color:var(--ink-faint);letter-spacing:.1em;margin-top:2px;}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(74,31,20,.12);background:#fff;}
+  .btn.primary{
+    background:linear-gradient(150deg, var(--clay-600), var(--clay-500));
+    border-color:transparent;
+    color:#fdf3e8;
+  }
+  .btn.primary small{color:rgba(253,243,232,.78);}
+  .btn.primary:hover{background:linear-gradient(150deg, var(--clay-700), var(--clay-600));}
+
+  .qrbox{
+    margin-top:26px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+  }
+  .qrbox img{
+    width:150px;height:150px;
+    padding:7px;
+    background:#fff;
+    border-radius:12px;
+    border:1px solid rgba(176,74,38,.18);
+    box-shadow:0 6px 16px rgba(74,31,20,.10);
+  }
+  .qrbox span{font-size:11px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;}
+
+  .foot{
+    margin-top:26px;
+    font-size:11.5px;
+    letter-spacing:.1em;
+    color:var(--ink-faint);
+    border-top:1px solid rgba(176,74,38,.16);
+    padding-top:18px;
+  }
+  .foot span{display:block;}
+  .foot span + span{margin-top:4px;}
+  @media (prefers-reduced-motion:reduce){.bar i{animation:none;width:100%;}}
+</style>
+</head>
+<body>
+
+<div class="brick-veil" aria-hidden="true"><span></span><span></span></div>
+
+<main class="card">
+  <div class="eyebrow">Bilingual · 双语</div>
+  <div class="mark" aria-hidden="true">砖</div>
+
+  <h1>
+    砖纹袈裟
+    <span class="sub">The Brick-Pattern Kasaya · A Modern Legacy of Faith</span>
+  </h1>
+
+  <div class="title-rule"></div>
+
+  <p class="status" id="status">正在识别系统语言 / Detecting your language…</p>
+  <p class="status" id="detail" style="font-size:12.5px;">中文系统 → 中文版　·　Other languages → English</p>
+  <div class="bar" aria-hidden="true"><i></i></div>
+
+  <div class="choice">
+    <p>手动选择 / Choose manually</p>
+    <div class="buttons">
+      <a class="btn" id="zhLink" href="zh/">
+        <b>中文版</b>
+        <small>CHINESE VERSION</small>
+      </a>
+      <a class="btn" id="enLink" href="en/">
+        <b>English Version</b>
+        <small>英文版</small>
+      </a>
+    </div>
+  </div>
+
+  <div class="qrbox">
+    <img src="qr/bilingual-qr-512.png" alt="双语二维码：扫码后按手机系统语言自动进入中文版或英文版" width="512" height="512">
+    <span>分享此二维码 / Share this QR code</span>
+  </div>
+
+  <div class="foot">
+    <span>扫码后按手机系统语言自动跳转 / Auto-redirects by system language</span>
+    <span>zh · zh-CN · zh-TW · zh-HK → 中文　|　all others → English</span>
+    <span style="word-break:break-all;">yutou1223.github.io/brick-kasaya</span>
+    <span><a href="qr/bilingual-qr.png" download="bilingual-qr.png" style="color:var(--clay-600);text-decoration:none;border-bottom:1px dashed rgba(176,74,38,.4)">下载二维码高清图 / Download QR (PNG)</a></span>
+  </div>
+</main>
+
+<script>
+  (function () {
+    var nav = navigator.language || navigator.userLanguage || (navigator.languages && navigator.languages[0]) || '';
+    var langs = (navigator.languages && navigator.languages.length) ? navigator.languages : [nav];
+
+    // 用户手动选择过，则尊重该选择
+    var manual = null;
+    try { manual = sessionStorage.getItem('kasaya-lang'); } catch (e) {}
+
+    function pick() {
+      if (manual === 'zh' || manual === 'en') return manual;
+      for (var i = 0; i < langs.length; i++) {
+        var l = String(langs[i] || '').toLowerCase();
+        if (l.indexOf('zh') === 0 || l.indexOf('chinese') >= 0) return 'zh';
+      }
+      return 'en';
+    }
+
+    var choice = pick();
+    var statusEl = document.getElementById('status');
+    var detailEl = document.getElementById('detail');
+    var target = (choice === 'zh') ? 'zh/' : 'en/';
+    // ?stay=1 用于预览/截图：停留在选择页，不自动跳转
+    var stay = /[?&]stay=1\b/.test(location.search);
+
+    statusEl.innerHTML = (choice === 'zh')
+      ? '检测到中文系统，正在打开<b>中文版</b>…'
+      : 'Detected system language <b>' + (nav || 'unknown') + '</b> — opening the <b>English version</b>…';
+    detailEl.textContent = (choice === 'zh')
+      ? 'Opening the Chinese version…'
+      : '正在打开英文版…';
+    if (stay) {
+      statusEl.innerHTML = '预览模式：<b>' + (choice === 'zh' ? '中文版' : 'English version') + '</b> 将是你的默认跳转目标';
+      detailEl.textContent = 'Preview mode — no auto-redirect. Tap a button below to open a version.';
+      document.querySelector('.bar').style.display = 'none';
+    }
+
+    // 记录本次会话选择，便于用户手动切换后不再被自动跳转覆盖
+    document.getElementById('zhLink').addEventListener('click', function () {
+      try { sessionStorage.setItem('kasaya-lang', 'zh'); } catch (e) {}
+    });
+    document.getElementById('enLink').addEventListener('click', function () {
+      try { sessionStorage.setItem('kasaya-lang', 'en'); } catch (e) {}
+    });
+
+    // 预取目标页面，跳转更快
+    if (!stay) {
+      var pre = document.createElement('link');
+      pre.rel = 'prefetch';
+      pre.href = target;
+      document.head.appendChild(pre);
+
+      setTimeout(function () { location.replace(target); }, 900);
+    }
+  })();
+</script>
+
+</body>
+</html>
