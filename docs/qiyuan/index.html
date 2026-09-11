@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>云端的小小祈愿 · 唐风守护者 / A Little Wish in the Clouds</title>
+<meta name="description" content="扫码后按手机系统语言自动进入中文版或英文版：系统语言为中文则打开中文版，其余语言打开英文版。">
+<link rel="canonical" href="https://yutou1223.github.io/brick-kasaya/qiyuan/">
+<noscript><meta http-equiv="refresh" content="2; url=en/"></noscript>
+<style>
+  :root{
+    --ink-900:#4a3419;
+    --jade-700:#2e6f5e;
+    --jade-600:#3d8a75;
+    --jade-500:#4fa88e;
+    --jade-200:#cbe6db;
+    --red-600:#bf3a26;
+    --gold-600:#c9a227;
+    --gold-500:#e3be4b;
+    --gold-300:#f3e2ac;
+    --cream-100:#fdfaf3;
+    --ink:#4a3419;
+    --ink-faint:#9c8759;
+    --radius:18px;
+    --serif:"Songti SC","STSong","Source Han Serif SC","Noto Serif SC","SimSun","Charter",Georgia,serif;
+    --sans:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Noto Sans SC","Segoe UI",-apple-system,BlinkMacSystemFont,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px 20px;
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.8;
+    text-align:center;
+    background-color:var(--cream-100);
+    background-image:
+      radial-gradient(circle at 50% -6%, rgba(243,226,172,.55), transparent 48%),
+      radial-gradient(circle at 8% 4%, rgba(191,58,38,.10), transparent 40%),
+      radial-gradient(circle at 94% 10%, rgba(79,168,142,.16), transparent 42%),
+      radial-gradient(circle at 50% 100%, rgba(201,162,39,.12), transparent 55%);
+    background-attachment:fixed;
+    -webkit-font-smoothing:antialiased;
+  }
+  .cloud-veil{
+    position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.7;
+    -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0,0,0,.14) 44%, transparent 76%);
+            mask-image:linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0,0,0,.14) 44%, transparent 76%);
+  }
+  .cloud-veil span{
+    position:absolute;inset:0;
+    background-image:
+      radial-gradient(ellipse 120px 40px at 20% 12%, rgba(227,190,75,.16), transparent 70%),
+      radial-gradient(ellipse 160px 48px at 78% 22%, rgba(79,168,142,.13), transparent 70%),
+      radial-gradient(ellipse 140px 42px at 40% 40%, rgba(191,58,38,.07), transparent 70%);
+    background-size:520px 420px, 620px 520px, 480px 380px;
+    background-repeat:repeat;
+  }
+
+  .card{
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:560px;
+    padding:44px 34px 36px;
+    border-radius:var(--radius);
+    background:radial-gradient(circle at 50% 0%, #ffffff 0%, #fdfaf3 55%, #f3e9d6 100%);
+    border:1px solid rgba(61,138,117,.26);
+    box-shadow:0 10px 30px rgba(122,98,56,.13), 0 30px 70px rgba(122,98,56,.13);
+    overflow:hidden;
+  }
+  .card::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:6px;
+    background:linear-gradient(90deg, var(--gold-500), var(--red-600) 40%, var(--jade-500) 75%, var(--gold-500));
+  }
+  .card > *{position:relative;}
+
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--jade-700);font-weight:600;margin-bottom:20px;
+  }
+  .eyebrow::before,.eyebrow::after{content:"";width:28px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-500));}
+  .eyebrow::after{background:linear-gradient(270deg,transparent,var(--gold-500));}
+
+  .mark{
+    width:56px;height:56px;margin:0 auto 18px;
+    border-radius:15px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(150deg, var(--jade-500), var(--gold-500));
+    color:#fffdf5;font-size:25px;font-weight:700;
+    font-family:var(--serif);
+    box-shadow:0 8px 20px rgba(61,138,117,.3);
+  }
+
+  h1{
+    font-family:var(--serif);
+    margin:0;
+    font-size:clamp(26px, 5.4vw, 38px);
+    line-height:1.3;
+    color:var(--ink-900);
+    letter-spacing:.05em;
+  }
+  h1 .sub{
+    display:block;
+    margin-top:.5em;
+    font-size:clamp(12.5px, 2.3vw, 15px);
+    font-weight:500;
+    letter-spacing:.06em;
+    color:var(--red-600);
+    font-family:var(--sans);
+    line-height:1.5;
+  }
+  .title-rule{width:74px;height:3px;margin:24px auto;border-radius:9px;background:linear-gradient(90deg,var(--gold-300),var(--red-600),var(--gold-300));}
+
+  .status{font-size:14px;color:#8a7648;margin:0 0 6px;letter-spacing:.04em;}
+  .status b{color:var(--jade-700);font-weight:600;}
+  .bar{
+    height:4px;width:100%;max-width:260px;margin:20px auto 4px;
+    border-radius:99px;background:rgba(61,138,117,.16);overflow:hidden;
+  }
+  .bar i{
+    display:block;height:100%;width:0;border-radius:99px;
+    background:linear-gradient(90deg,var(--jade-500),var(--gold-500));
+    animation:load 1.4s ease-in-out forwards;
+  }
+  @keyframes load{from{width:0}to{width:100%}}
+
+  .choice{margin-top:30px;}
+  .choice p{font-size:12px;letter-spacing:.14em;color:#a08f65;margin:0 0 14px;text-transform:uppercase;}
+  .buttons{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
+  .btn{
+    flex:1 1 190px;min-width:170px;display:block;padding:14px 18px;border-radius:12px;
+    text-decoration:none;font-size:14.5px;letter-spacing:.04em;
+    border:1px solid rgba(61,138,117,.3);
+    background:rgba(255,255,255,.82);
+    color:var(--ink-900);
+    transition:transform .25s, box-shadow .25s, background .2s;
+  }
+  .btn b{display:block;font-size:15.5px;font-weight:600;font-family:var(--serif);letter-spacing:.06em;}
+  .btn small{display:block;font-size:11.5px;color:#a08f65;letter-spacing:.1em;margin-top:2px;}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(122,98,56,.16);background:#fff;}
+  .btn.primary{
+    background:linear-gradient(150deg, var(--jade-600), var(--gold-500));
+    border-color:transparent;color:#fffdf5;
+  }
+  .btn.primary small{color:rgba(255,253,245,.85);}
+  .btn.primary:hover{background:linear-gradient(150deg, var(--jade-700), var(--gold-600));}
+
+  .qrbox{margin-top:26px;display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .qrbox img{
+    width:150px;height:150px;padding:7px;background:#fff;border-radius:12px;
+    border:1px solid rgba(61,138,117,.24);
+    box-shadow:0 6px 16px rgba(122,98,56,.14);
+  }
+  .qrbox span{font-size:11px;letter-spacing:.14em;color:#a08f65;text-transform:uppercase;}
+
+  .foot{
+    margin-top:26px;font-size:11.5px;letter-spacing:.1em;color:#a08f65;
+    border-top:1px solid rgba(61,138,117,.2);padding-top:18px;
+  }
+  .foot span{display:block;}
+  .foot span + span{margin-top:4px;}
+  .foot a{color:var(--red-600);text-decoration:none;border-bottom:1px dashed rgba(191,58,38,.4);}
+  @media (prefers-reduced-motion:reduce){.bar i{animation:none;width:100%;}}
+</style>
+</head>
+<body>
+
+<div class="cloud-veil" aria-hidden="true"><span></span></div>
+
+<main class="card">
+  <div class="eyebrow">Bilingual · 双语</div>
+  <div class="mark" aria-hidden="true">愿</div>
+
+  <h1>
+    云端的小小祈愿 · 唐风守护者
+    <span class="sub">A Little Wish in the Clouds · Guardian of Tang</span>
+  </h1>
+
+  <div class="title-rule"></div>
+
+  <p class="status" id="status">正在识别系统语言 / Detecting your language…</p>
+  <p class="status" id="detail" style="font-size:12.5px;">中文系统 → 中文版　·　Other languages → English</p>
+  <div class="bar" aria-hidden="true"><i></i></div>
+
+  <div class="choice">
+    <p>手动选择 / Choose manually</p>
+    <div class="buttons">
+      <a class="btn" id="zhLink" href="zh/">
+        <b>中文版</b>
+        <small>CHINESE VERSION</small>
+      </a>
+      <a class="btn" id="enLink" href="en/">
+        <b>English Version</b>
+        <small>英文版</small>
+      </a>
+    </div>
+  </div>
+
+  <div class="qrbox">
+    <img src="qr/bilingual-qr-512.png" alt="双语二维码：扫码后按手机系统语言自动进入中文版或英文版" width="512" height="512">
+    <span>分享此二维码 / Share this QR code</span>
+  </div>
+
+  <div class="foot">
+    <span>扫码后按手机系统语言自动跳转 / Auto-redirects by system language</span>
+    <span>zh · zh-CN · zh-TW · zh-HK → 中文　|　all others → English</span>
+    <span style="word-break:break-all;">yutou1223.github.io/brick-kasaya/qiyuan</span>
+    <span><a href="../../">← 作品集 / All works</a></span>
+    <span><a href="qr/bilingual-qr.png" download="bilingual-qr.png">下载二维码高清图 / Download QR (PNG)</a></span>
+  </div>
+</main>
+
+<script>
+  (function () {
+    var nav = navigator.language || navigator.userLanguage || (navigator.languages && navigator.languages[0]) || '';
+    var langs = (navigator.languages && navigator.languages.length) ? navigator.languages : [nav];
+
+    var manual = null;
+    try { manual = sessionStorage.getItem('kasaya-lang'); } catch (e) {}
+
+    function pick() {
+      if (manual === 'zh' || manual === 'en') return manual;
+      for (var i = 0; i < langs.length; i++) {
+        var l = String(langs[i] || '').toLowerCase();
+        if (l.indexOf('zh') === 0 || l.indexOf('chinese') >= 0) return 'zh';
+      }
+      return 'en';
+    }
+
+    var choice = pick();
+    var statusEl = document.getElementById('status');
+    var detailEl = document.getElementById('detail');
+    var target = (choice === 'zh') ? 'zh/' : 'en/';
+    var stay = /[?&]stay=1\b/.test(location.search);
+
+    statusEl.innerHTML = (choice === 'zh')
+      ? '检测到中文系统，正在打开<b>中文版</b>…'
+      : 'Detected system language <b>' + (nav || 'unknown') + '</b> — opening the <b>English version</b>…';
+    detailEl.textContent = (choice === 'zh') ? 'Opening the Chinese version…' : '正在打开英文版…';
+    if (stay) {
+      statusEl.innerHTML = '预览模式：<b>' + (choice === 'zh' ? '中文版' : 'English version') + '</b> 将是你的默认跳转目标';
+      detailEl.textContent = 'Preview mode — no auto-redirect. Tap a button below to open a version.';
+      document.querySelector('.bar').style.display = 'none';
+    }
+
+    document.getElementById('zhLink').addEventListener('click', function () {
+      try { sessionStorage.setItem('kasaya-lang', 'zh'); } catch (e) {}
+    });
+    document.getElementById('enLink').addEventListener('click', function () {
+      try { sessionStorage.setItem('kasaya-lang', 'en'); } catch (e) {}
+    });
+
+    if (!stay) {
+      var pre = document.createElement('link');
+      pre.rel = 'prefetch';
+      pre.href = target;
+      document.head.appendChild(pre);
+      setTimeout(function () { location.replace(target); }, 900);
+    }
+  })();
+</script>
+
+</body>
+</html>
