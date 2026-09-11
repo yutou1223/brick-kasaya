@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大漠孤行 · 长安月 / Solitary Journey Across the Desert</title>
+<meta name="description" content="扫码后按手机系统语言自动进入中文版或英文版：系统语言为中文则打开中文版，其余语言打开英文版。">
+<link rel="canonical" href="https://yutou1223.github.io/brick-kasaya/damo/">
+<!-- 无 JavaScript 时的兜底：直接进入英文版 -->
+<noscript><meta http-equiv="refresh" content="2; url=en/"></noscript>
+<style>
+  :root{
+    --ink-900:#33240c;
+    --amber-700:#8a6212;
+    --amber-600:#b8860b;
+    --amber-500:#d9a520;
+    --amber-400:#efc453;
+    --amber-300:#f7dc94;
+    --sun:#e8552a;
+    --sand-100:#fdf9ee;
+    --sand-300:#f2e3bd;
+    --ink:#3b2a10;
+    --ink-faint:#97814f;
+    --radius:18px;
+    --serif:"Songti SC","STSong","Source Han Serif SC","Noto Serif SC","SimSun","Charter",Georgia,serif;
+    --sans:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Noto Sans SC","Segoe UI",-apple-system,BlinkMacSystemFont,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px 20px;
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.8;
+    text-align:center;
+    background-color:var(--sand-100);
+    background-image:
+      radial-gradient(circle at 50% -8%, rgba(239,196,83,.46), transparent 52%),
+      radial-gradient(circle at 10% 4%, rgba(232,85,42,.12), transparent 42%),
+      radial-gradient(circle at 92% 10%, rgba(201,154,46,.16), transparent 40%),
+      radial-gradient(circle at 50% 100%, rgba(138,98,18,.10), transparent 55%);
+    background-attachment:fixed;
+    -webkit-font-smoothing:antialiased;
+  }
+  .dune-veil{
+    position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.55;
+    -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,.75), rgba(0,0,0,.12) 45%, transparent 78%);
+            mask-image:linear-gradient(to bottom, rgba(0,0,0,.75), rgba(0,0,0,.12) 45%, transparent 78%);
+  }
+  .dune-veil span{
+    position:absolute;inset:0;
+    background-image:
+      repeating-linear-gradient(115deg, rgba(201,154,46,.16) 0 2px, rgba(201,154,46,0) 2px 26px),
+      repeating-linear-gradient(65deg, rgba(232,85,42,.07) 0 2px, rgba(232,85,42,0) 2px 44px);
+  }
+
+  .card{
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:560px;
+    padding:44px 34px 36px;
+    border-radius:var(--radius);
+    background:radial-gradient(circle at 50% 0%, #ffffff 0%, #fefaef 55%, #f6ead0 100%);
+    border:1px solid rgba(184,134,11,.2);
+    box-shadow:0 10px 30px rgba(77,55,18,.12), 0 30px 70px rgba(77,55,18,.12);
+    overflow:hidden;
+  }
+  .card::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:
+      repeating-linear-gradient(115deg, rgba(201,154,46,.07) 0 2px, rgba(201,154,46,0) 2px 22px),
+      repeating-linear-gradient(65deg, rgba(232,85,42,.045) 0 2px, rgba(232,85,42,0) 2px 34px);
+  }
+  .card > *{position:relative;}
+
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--amber-600);font-weight:600;margin-bottom:20px;
+  }
+  .eyebrow::before,.eyebrow::after{content:"";width:28px;height:1px;background:linear-gradient(90deg,transparent,var(--amber-400));}
+  .eyebrow::after{background:linear-gradient(270deg,transparent,var(--amber-400));}
+
+  .mark{
+    width:56px;height:56px;margin:0 auto 18px;
+    border-radius:15px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(150deg, var(--sun), var(--amber-500));
+    color:#fffaf0;font-size:25px;font-weight:700;
+    font-family:var(--serif);
+    box-shadow:0 8px 18px rgba(232,85,42,.3);
+  }
+
+  h1{
+    font-family:var(--serif);
+    margin:0;
+    font-size:clamp(30px, 7vw, 44px);
+    line-height:1.28;
+    color:var(--ink-900);
+    letter-spacing:.06em;
+  }
+  h1 .sub{
+    display:block;
+    margin-top:.5em;
+    font-size:clamp(12.5px, 2.3vw, 15px);
+    font-weight:500;
+    letter-spacing:.06em;
+    color:var(--amber-700);
+    font-family:var(--sans);
+    line-height:1.5;
+  }
+  .title-rule{width:74px;height:3px;margin:24px auto;border-radius:9px;background:linear-gradient(90deg,var(--amber-300),var(--sun),var(--amber-300));}
+
+  .status{
+    font-size:14px;
+    color:var(--ink-faint);
+    margin:0 0 6px;
+    letter-spacing:.04em;
+  }
+  .status b{color:var(--amber-700);font-weight:600;}
+  .bar{
+    height:4px;width:100%;max-width:260px;margin:20px auto 4px;
+    border-radius:99px;background:rgba(184,134,11,.18);overflow:hidden;
+  }
+  .bar i{
+    display:block;height:100%;width:0;
+    border-radius:99px;
+    background:linear-gradient(90deg,var(--sun),var(--amber-400));
+    animation:load 1.4s ease-in-out forwards;
+  }
+  @keyframes load{from{width:0}to{width:100%}}
+
+  .choice{margin-top:30px;}
+  .choice p{
+    font-size:12px;letter-spacing:.14em;color:var(--ink-faint);
+    margin:0 0 14px;text-transform:uppercase;
+  }
+  .buttons{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
+  .btn{
+    flex:1 1 190px;
+    min-width:170px;
+    display:block;
+    padding:14px 18px;
+    border-radius:12px;
+    text-decoration:none;
+    font-size:14.5px;
+    letter-spacing:.04em;
+    border:1px solid rgba(184,134,11,.32);
+    background:rgba(255,255,255,.78);
+    color:var(--ink-900);
+    transition:transform .25s, box-shadow .25s, background .2s;
+  }
+  .btn b{display:block;font-size:15.5px;font-weight:600;font-family:var(--serif);letter-spacing:.06em;}
+  .btn small{display:block;font-size:11.5px;color:var(--ink-faint);letter-spacing:.1em;margin-top:2px;}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(77,55,18,.14);background:#fff;}
+  .btn.primary{
+    background:linear-gradient(150deg, var(--sun), var(--amber-500));
+    border-color:transparent;
+    color:#fffaf0;
+  }
+  .btn.primary small{color:rgba(255,250,240,.8);}
+  .btn.primary:hover{background:linear-gradient(150deg, #d1471f, var(--amber-600));}
+
+  .qrbox{
+    margin-top:26px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+  }
+  .qrbox img{
+    width:150px;height:150px;
+    padding:7px;
+    background:#fff;
+    border-radius:12px;
+    border:1px solid rgba(184,134,11,.24);
+    box-shadow:0 6px 16px rgba(77,55,18,.12);
+  }
+  .qrbox span{font-size:11px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;}
+
+  .foot{
+    margin-top:26px;
+    font-size:11.5px;
+    letter-spacing:.1em;
+    color:var(--ink-faint);
+    border-top:1px solid rgba(184,134,11,.22);
+    padding-top:18px;
+  }
+  .foot span{display:block;}
+  .foot span + span{margin-top:4px;}
+  @media (prefers-reduced-motion:reduce){.bar i{animation:none;width:100%;}}
+</style>
+</head>
+<body>
+
+<div class="dune-veil" aria-hidden="true"><span></span></div>
+
+<main class="card">
+  <div class="eyebrow">Bilingual · 双语</div>
+  <div class="mark" aria-hidden="true">行</div>
+
+  <h1>
+    大漠孤行 · 长安月
+    <span class="sub">Solitary Journey Across the Desert · The Moon over Chang'an</span>
+  </h1>
+
+  <div class="title-rule"></div>
+
+  <p class="status" id="status">正在识别系统语言 / Detecting your language…</p>
+  <p class="status" id="detail" style="font-size:12.5px;">中文系统 → 中文版　·　Other languages → English</p>
+  <div class="bar" aria-hidden="true"><i></i></div>
+
+  <div class="choice">
+    <p>手动选择 / Choose manually</p>
+    <div class="buttons">
+      <a class="btn" id="zhLink" href="zh/">
+        <b>中文版</b>
+        <small>CHINESE VERSION</small>
+      </a>
+      <a class="btn" id="enLink" href="en/">
+        <b>English Version</b>
+        <small>英文版</small>
+      </a>
+    </div>
+  </div>
+
+  <div class="qrbox">
+    <img src="qr/bilingual-qr-512.png" alt="双语二维码：扫码后按手机系统语言自动进入中文版或英文版" width="512" height="512">
+    <span>分享此二维码 / Share this QR code</span>
+  </div>
+
+  <div class="foot">
+    <span>扫码后按手机系统语言自动跳转 / Auto-redirects by system language</span>
+    <span>zh · zh-CN · zh-TW · zh-HK → 中文　|　all others → English</span>
+    <span style="word-break:break-all;">yutou1223.github.io/brick-kasaya/damo</span>
+    <span><a href="../../" style="color:var(--amber-700);text-decoration:none;border-bottom:1px dashed rgba(184,134,11,.4)">← 砖纹袈裟 / The Brick-Pattern Kasaya</a></span>
+  </div>
+</main>
+
+<script>
+  (function () {
+    var nav = navigator.language || navigator.userLanguage || (navigator.languages && navigator.languages[0]) || '';
+    var langs = (navigator.languages && navigator.languages.length) ? navigator.languages : [nav];
+
+    var manual = null;
+    try { manual = sessionStorage.getItem('kasaya-lang'); } catch (e) {}
+
+    function pick() {
+      if (manual === 'zh' || manual === 'en') return manual;
+      for (var i = 0; i < langs.length; i++) {
+        var l = String(langs[i] || '').toLowerCase();
+        if (l.indexOf('zh') === 0 || l.indexOf('chinese') >= 0) return 'zh';
+      }
+      return 'en';
+    }
+
+    var choice = pick();
+    var statusEl = document.getElementById('status');
+    var detailEl = document.getElementById('detail');
+    var target = (choice === 'zh') ? 'zh/' : 'en/';
+    // ?stay=1 用于预览/截图：停留在选择页，不自动跳转
+    var stay = /[?&]stay=1\b/.test(location.search);
+
+    statusEl.innerHTML = (choice === 'zh')
+      ? '检测到中文系统，正在打开<b>中文版</b>…'
+      : 'Detected system language <b>' + (nav || 'unknown') + '</b> — opening the <b>English version</b>…';
+    detailEl.textContent = (choice === 'zh')
+      ? 'Opening the Chinese version…'
+      : '正在打开英文版…';
+    if (stay) {
+      statusEl.innerHTML = '预览模式：<b>' + (choice === 'zh' ? '中文版' : 'English version') + '</b> 将是你的默认跳转目标';
+      detailEl.textContent = 'Preview mode — no auto-redirect. Tap a button below to open a version.';
+      document.querySelector('.bar').style.display = 'none';
+    }
+
+    document.getElementById('zhLink').addEventListener('click', function () {
+      try { sessionStorage.setItem('kasaya-lang', 'zh'); } catch (e) {}
+    });
+    document.getElementById('enLink').addEventListener('click', function () {
+      try { sessionStorage.setItem('kasaya-lang', 'en'); } catch (e) {}
+    });
+
+    if (!stay) {
+      var pre = document.createElement('link');
+      pre.rel = 'prefetch';
+      pre.href = target;
+      document.head.appendChild(pre);
+      setTimeout(function () { location.replace(target); }, 900);
+    }
+  })();
+</script>
+
+</body>
+</html>
