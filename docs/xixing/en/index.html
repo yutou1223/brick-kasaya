@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Vow to Go West - The Moon over Chang'an</title>
+<meta name="description" content="Outside Chang'an, beneath the Big Wild Goose Pagoda, a monk stands before the Buddha and says: if the Buddha will not come east, then I shall go west. The figure on this phone case is Xuanzang of the Tang dynasty.">
+<link rel="canonical" href="https://yutou1223.github.io/brick-kasaya/xixing/en/">
+<style>
+  :root{
+    --navy-900:#0d1b34;
+    --navy-800:#14274a;
+    --navy-700:#1b3866;
+    --navy-600:#24487e;
+    --navy-500:#335d99;
+    --gold-700:#a8862c;
+    --gold-600:#c9a227;
+    --gold-500:#e0bb43;
+    --gold-400:#efd47a;
+    --gold-300:#f6e6ac;
+    --red-700:#8f2419;
+    --red-600:#b52d1d;
+    --red-500:#c93a26;
+    --paper:#f7f2e6;
+    --paper-2:#fdfaf2;
+    --ink:#1b2b46;
+    --ink-soft:#3d5375;
+    --radius:18px;
+    --shadow-lg:0 10px 30px rgba(8,18,36,.34), 0 30px 70px rgba(8,18,36,.34);
+    --serif:"Charter","Cambria","Source Serif 4","Iowan Old Style","Palatino Linotype","Book Antiqua","Georgia",serif;
+    --sans:"Inter","Segoe UI Variable Text","Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.9;
+    background-color:var(--navy-900);
+    background-image:
+      radial-gradient(circle at 50% -8%, rgba(224,187,67,.30), transparent 46%),
+      radial-gradient(circle at 8% 6%, rgba(201,58,38,.20), transparent 38%),
+      radial-gradient(circle at 94% 12%, rgba(51,93,153,.34), transparent 44%),
+      linear-gradient(180deg, var(--navy-800) 0%, var(--navy-900) 58%, #0a1526 100%);
+    background-attachment:fixed;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  /* ---------- Night sky and cloud texture ---------- */
+  .night-veil{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    opacity:.75;
+    -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,.85), rgba(0,0,0,.2) 52%, transparent 82%);
+            mask-image:linear-gradient(to bottom, rgba(0,0,0,.85), rgba(0,0,0,.2) 52%, transparent 82%);
+  }
+  .night-veil span{
+    position:absolute;inset:0;
+    background-image:
+      radial-gradient(circle, rgba(246,230,172,.85) 0 1px, transparent 1.6px),
+      radial-gradient(circle, rgba(246,230,172,.5) 0 1px, transparent 1.5px),
+      radial-gradient(circle, rgba(246,230,172,.35) 0 1px, transparent 1.4px);
+    background-size:190px 190px, 290px 290px, 420px 420px;
+    background-position:20px 40px, 120px 90px, 60px 150px;
+  }
+  .night-veil::after{
+    content:"";
+    position:absolute;inset:0;
+    background-image:
+      repeating-linear-gradient(115deg, rgba(224,187,67,.055) 0 2px, rgba(224,187,67,0) 2px 30px),
+      repeating-linear-gradient(65deg, rgba(224,187,67,.032) 0 2px, rgba(224,187,67,0) 2px 52px);
+    -webkit-mask-image:radial-gradient(ellipse at 50% 30%, #000 10%, transparent 72%);
+            mask-image:radial-gradient(ellipse at 50% 30%, #000 10%, transparent 72%);
+  }
+
+  /* ---------- Paper sheet (light reading surface, consistent with the series) ---------- */
+  .sheet{
+    position:relative;
+    z-index:1;
+    max-width:1180px;
+    margin:44px auto 56px;
+    padding:0 24px 56px;
+    border-radius:26px;
+    background-color:var(--paper);
+    background-image:
+      radial-gradient(circle at 50% 0%, rgba(224,187,67,.20), transparent 46%),
+      radial-gradient(circle at 92% 6%, rgba(201,162,39,.14), transparent 40%),
+      radial-gradient(circle at 8% 100%, rgba(27,56,102,.10), transparent 46%);
+    box-shadow:0 20px 60px rgba(8,18,36,.42);
+    overflow:hidden;
+  }
+  .sheet::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;height:7px;
+    background:linear-gradient(90deg, var(--red-600), var(--gold-600) 42%, var(--navy-600) 78%, var(--red-600));
+  }
+
+  .page{
+    position:relative;
+    z-index:1;
+    max-width:1180px;
+    margin:0 auto;
+  }
+
+  /* ---------- Masthead ---------- */
+  header.masthead{
+    padding:60px 0 28px;
+    text-align:center;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:12px;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--red-600);
+    font-weight:600;
+    margin-bottom:22px;
+  }
+  .eyebrow::before,
+  .eyebrow::after{
+    content:"";
+    width:34px;height:1px;
+    background:linear-gradient(90deg, transparent, var(--gold-500));
+  }
+  .eyebrow::after{background:linear-gradient(270deg, transparent, var(--gold-500));}
+
+  h1.title{
+    font-family:var(--serif);
+    font-weight:700;
+    margin:0;
+    color:var(--navy-900);
+    letter-spacing:.05em;
+    line-height:1.25;
+  }
+  h1.title .l1{
+    display:block;
+    font-size:clamp(34px, 6vw, 64px);
+  }
+  h1.title .l2{
+    display:block;
+    margin-top:.4em;
+    font-size:clamp(16px, 2.5vw, 24px);
+    font-weight:500;
+    color:var(--red-600);
+    letter-spacing:.16em;
+  }
+  .title-rule{
+    width:92px;height:3px;
+    margin:34px auto 0;
+    border-radius:9px;
+    background:linear-gradient(90deg, var(--gold-400), var(--red-600), var(--gold-400));
+  }
+  .lede{
+    font-family:var(--serif);
+    max-width:640px;
+    margin:22px auto 0;
+    font-size:15.5px;
+    color:var(--ink-soft);
+    letter-spacing:.06em;
+  }
+
+  /* ---------- Main ---------- */
+  .layout{
+    display:grid;
+    grid-template-columns:minmax(300px, 400px) minmax(0, 1fr);
+    gap:56px;
+    align-items:start;
+    margin-top:56px;
+  }
+  .showcase{position:sticky; top:40px;}
+
+  .phone-card{
+    position:relative;
+    border-radius:var(--radius);
+    padding:30px 26px;
+    background:radial-gradient(circle at 50% 26%, #ffffff 0%, #fbf8f0 55%, #efe7d6 100%);
+    box-shadow:var(--shadow-lg);
+    border:1px solid rgba(27,56,102,.16);
+    overflow:hidden;
+  }
+  .phone-card::before{
+    content:"";
+    position:absolute;inset:0;
+    background-image:
+      repeating-linear-gradient(115deg, rgba(201,162,39,.06) 0 2px, rgba(201,162,39,0) 2px 26px);
+    pointer-events:none;
+  }
+  .phone-card picture{display:block;position:relative;}
+  .phone-card img{
+    position:relative;
+    display:block;
+    width:100%;
+    height:auto;
+    border-radius:10px;
+    filter:drop-shadow(0 18px 26px rgba(13,27,52,.26));
+    cursor:zoom-in;
+    transition:transform .5s cubic-bezier(.2,.7,.3,1);
+  }
+  .phone-card img:hover{transform:translateY(-6px) scale(1.012);}
+
+  figure{margin:0;}
+  figcaption{
+    margin-top:20px;
+    text-align:center;
+    font-size:12.5px;
+    letter-spacing:.16em;
+    color:var(--ink-soft);
+    opacity:.85;
+    position:relative;
+  }
+  figcaption b{
+    display:block;
+    font-family:var(--serif);
+    font-size:14px;
+    letter-spacing:.2em;
+    color:var(--red-600);
+    font-weight:600;
+    margin-bottom:4px;
+  }
+
+  .chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+    margin-top:22px;
+    position:relative;
+  }
+  .chip{
+    font-size:11.5px;
+    letter-spacing:.1em;
+    padding:5px 12px;
+    border-radius:99px;
+    color:var(--navy-700);
+    background:rgba(255,255,255,.82);
+    border:1px solid rgba(201,162,39,.34);
+    backdrop-filter:blur(4px);
+  }
+
+  /* ---------- Body text ---------- */
+  article.prose{
+    font-family:var(--serif);
+    font-size:17.5px;
+    line-height:2.15;
+    color:var(--ink);
+  }
+  article.prose p{
+    margin:0 0 1.5em;
+    text-align:justify;
+    text-justify:inter-ideograph;
+  }
+  article.prose p:first-of-type{
+    font-size:19px;
+    color:var(--navy-900);
+  }
+  .dialogue{
+    margin:0 0 .9em;
+    padding-left:1.15em;
+    border-left:2px solid rgba(201,162,39,.55);
+    text-align:left;
+  }
+  .dialogue .who{
+    display:block;
+    margin-top:.15em;
+    font-family:var(--sans);
+    font-size:12.5px;
+    letter-spacing:.14em;
+    color:var(--ink-soft);
+    opacity:.8;
+  }
+  blockquote{
+    font-family:var(--serif);
+    margin:0 0 1.5em;
+    padding:22px 26px;
+    border-left:3px solid var(--red-600);
+    border-radius:0 12px 12px 0;
+    background:linear-gradient(90deg, rgba(201,162,39,.20), rgba(201,162,39,0));
+    color:var(--navy-800);
+    font-size:21px;
+    letter-spacing:.14em;
+    font-weight:600;
+  }
+  blockquote p{margin:0;text-align:left;font-size:inherit;}
+
+  /* Closing lines */
+  .coda-lines{
+    margin:2.2em 0 0;
+    padding-top:1.6em;
+    border-top:1px dashed rgba(201,162,39,.5);
+  }
+  .coda-lines p{
+    margin:0 0 .7em;
+    font-size:18.5px;
+    letter-spacing:.06em;
+    color:var(--navy-800);
+    text-align:left;
+  }
+  .coda-lines p:last-child{
+    margin-bottom:0;
+    color:var(--red-700);
+    font-weight:600;
+  }
+
+  /* Culture notes */
+  .culture{
+    margin-top:64px;
+    padding:44px 40px 34px;
+    border-radius:var(--radius);
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(160deg, rgba(255,252,244,.96), rgba(246,240,226,.92));
+    border:1px solid rgba(201,162,39,.32);
+    box-shadow:0 6px 20px rgba(13,27,52,.08);
+  }
+  .culture::before{
+    content:"";
+    position:absolute;inset:0;
+    background-image:
+      repeating-linear-gradient(115deg, rgba(201,162,39,.07) 0 2px, rgba(201,162,39,0) 2px 26px);
+    pointer-events:none;
+  }
+  .culture > *{position:relative;}
+  .culture-head{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:26px;
+  }
+  .culture-head h2{
+    font-family:var(--serif);
+    font-size:20px;
+    letter-spacing:.2em;
+    color:var(--red-600);
+    margin:0;
+    font-weight:700;
+    white-space:nowrap;
+  }
+  .culture-head::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:linear-gradient(90deg, rgba(201,162,39,.5), transparent);
+  }
+  .culture .facts{
+    display:grid;
+    gap:20px;
+  }
+  .fact{
+    position:relative;
+    padding-left:26px;
+    font-family:var(--serif);
+    font-size:16.5px;
+    line-height:2;
+    color:var(--ink);
+  }
+  .fact::before{
+    content:"◆";
+    position:absolute;
+    left:2px;
+    top:.15em;
+    font-size:11px;
+    color:var(--gold-600);
+  }
+
+  /* Closing quote */
+  .coda{
+    margin-top:64px;
+    padding:46px 32px;
+    border-radius:var(--radius);
+    text-align:center;
+    position:relative;
+    background:linear-gradient(150deg, var(--navy-800), var(--navy-600) 52%, var(--red-700));
+    color:var(--gold-300);
+    box-shadow:var(--shadow-lg);
+    overflow:hidden;
+  }
+  .coda::before{
+    content:"";
+    position:absolute;inset:0;
+    background-image:
+      radial-gradient(circle, rgba(246,230,172,.55) 0 1px, transparent 1.5px);
+    background-size:120px 120px;
+    opacity:.5;
+    pointer-events:none;
+  }
+  .coda > *{position:relative;}
+  .coda .mark{
+    font-family:var(--serif);
+    font-size:34px;
+    color:var(--gold-400);
+    line-height:1;
+    margin-bottom:14px;
+    letter-spacing:.2em;
+  }
+  .coda p{
+    font-family:var(--serif);
+    margin:0 auto;
+    max-width:800px;
+    font-size:clamp(16px, 2.3vw, 22px);
+    line-height:2.1;
+    letter-spacing:.08em;
+    text-shadow:0 1px 3px rgba(0,0,0,.35);
+  }
+
+  footer.colophon{
+    margin-top:56px;
+    padding-top:26px;
+    border-top:1px solid rgba(27,56,102,.18);
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px 26px;
+    justify-content:space-between;
+    align-items:center;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    letter-spacing:.08em;
+  }
+  footer.colophon a{
+    color:var(--red-600);
+    text-decoration:none;
+    border-bottom:1px dashed rgba(181,45,29,.42);
+  }
+  footer.colophon a:hover{color:var(--navy-900);}
+
+  /* Back to top */
+  .to-top{
+    position:fixed;
+    right:24px;bottom:26px;
+    z-index:20;
+    width:46px;height:46px;
+    border-radius:50%;
+    border:1px solid rgba(224,187,67,.5);
+    background:rgba(20,39,74,.82);
+    backdrop-filter:blur(8px);
+    color:var(--gold-400);
+    font-size:17px;
+    line-height:1;
+    cursor:pointer;
+    box-shadow:0 4px 14px rgba(8,18,36,.4);
+    opacity:0;
+    transform:translateY(12px);
+    pointer-events:none;
+    transition:opacity .3s, transform .3s, background .2s;
+  }
+  .to-top.show{opacity:1;transform:translateY(0);pointer-events:auto;}
+  .to-top:hover{background:rgba(27,56,102,.95);}
+
+  /* Lightbox */
+  .lightbox{
+    position:fixed;inset:0;z-index:50;
+    display:none;
+    align-items:center;justify-content:center;
+    padding:32px;
+    background:rgba(9,17,32,.9);
+    backdrop-filter:blur(6px);
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img{
+    max-width:min(92vw, 560px);
+    max-height:88vh;
+    width:auto;height:auto;
+    border-radius:14px;
+    box-shadow:0 30px 80px rgba(0,0,0,.55);
+    background:#fff;
+  }
+  .lightbox .close{
+    position:absolute;top:22px;right:26px;
+    width:42px;height:42px;
+    border-radius:50%;
+    border:1px solid rgba(246,230,172,.45);
+    background:rgba(255,255,255,.12);
+    color:var(--gold-300);font-size:20px;line-height:1;
+    cursor:pointer;
+  }
+  .lightbox .close:hover{background:rgba(255,255,255,.24);}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    .layout{
+      grid-template-columns:1fr;
+      gap:40px;
+      margin-top:40px;
+    }
+    .showcase{position:static;}
+    .phone-card{max-width:340px;margin:0 auto;}
+    header.masthead{padding:42px 0 18px;}
+    article.prose{font-size:17px;line-height:2.05;}
+    article.prose p:first-of-type{font-size:18px;}
+    .culture{padding:32px 22px 26px;margin-top:48px;}
+    .coda{padding:36px 22px;margin-top:48px;}
+    .sheet{margin:16px 12px 32px;padding:0 14px 44px;}
+    blockquote{font-size:19px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+
+  /* ---------- Print ---------- */
+  @media print{
+    body{background:#fff;background-image:none;line-height:1.8;}
+    .night-veil,.to-top,.lightbox,.chips{display:none !important;}
+    .sheet{box-shadow:none;margin:0;border-radius:0;padding:0;}
+    .sheet::before{display:none;}
+    .layout{grid-template-columns:1fr;gap:24px;margin-top:24px;}
+    .showcase{position:static;}
+    .phone-card{box-shadow:none;border:1px solid #ddd;padding:12px;max-width:260px;margin:0 auto;}
+    .culture,.coda{box-shadow:none;}
+    .coda{background:#1b3866 !important;color:#f6e6ac;}
+    .coda::before{display:none;}
+    .coda p{text-shadow:none;font-size:14px;}
+    article.prose{font-size:12pt;}
+    footer.colophon{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="night-veil" aria-hidden="true"><span></span></div>
+
+<div class="sheet">
+  <div class="page">
+
+    <header class="masthead">
+      <div class="eyebrow">Phone Case Story · Illustrated</div>
+      <h1 class="title">
+        <span class="l1">The Vow to Go West</span>
+        <span class="l2">The Moon over Chang'an · A Sentence Beneath the Big Wild Goose Pagoda</span>
+      </h1>
+      <div class="title-rule"></div>
+      <p class="lede">Some roads must be walked by someone first.</p>
+    </header>
+
+    <main class="layout">
+
+      <!-- Image -->
+      <section class="showcase" aria-label="Image">
+        <figure class="phone-card">
+          <picture>
+            <source srcset="assets/phone-case.jpg" type="image/jpeg">
+            <img id="caseImg" src="assets/phone-case.png"
+                 alt="A phone case: a golden Big Wild Goose Pagoda and cloud motifs on deep blue, a red vertical band bearing the gold calligraphy &ldquo;If the Buddha will not go east, I shall go west&rdquo;, and below it the back view of a little monk in a red and yellow kasaya"
+                 width="404" height="824">
+          </picture>
+          <figcaption>
+            <b>The Vow to Go West · Phone Case</b>
+            Click the image to enlarge
+          </figcaption>
+        </figure>
+        <div class="chips" aria-label="Keywords">
+          <span class="chip">Xuanzang</span>
+          <span class="chip">Big Wild Goose Pagoda</span>
+          <span class="chip">India</span>
+          <span class="chip">The Vow</span>
+          <span class="chip">Moonlight</span>
+        </div>
+      </section>
+
+      <!-- Story -->
+      <article class="prose">
+
+        <p>Outside the walls of Chang'an, beneath the Big Wild Goose Pagoda.</p>
+
+        <p>A monk stood before the statue of the Buddha. For a long, long while, he did not move.</p>
+
+        <p>The wind came from the west. It stirred his red kasaya, and the bronze bells along the eaves. He lifted his head, looked into the Buddha's compassionate eyes, and said one sentence, very softly:</p>
+
+        <blockquote><p>If the Buddha will not go east, then I shall go west.</p></blockquote>
+
+        <p class="dialogue">&ldquo;Master, where are you going?&rdquo;<span class="who">the young novice beside him did not understand</span></p>
+
+        <p class="dialogue">&ldquo;To India. To bring back the true scriptures.&rdquo;<span class="who">he said</span></p>
+
+        <p class="dialogue">&ldquo;But that road crosses deserts and climbs over snow mountains — tens of thousands of li. Many set out, and never came back.&rdquo;<span class="who">the novice grew anxious</span></p>
+
+        <p>The monk smiled. From his sleeve he took a worn and broken scroll, opened it, and pointed at the words. &ldquo;Look — a line is missing here, a passage there. The scriptures we recite are incomplete. The Buddhist canon came from the west, passed from hand to hand along the way; it is like a bowl of water carried from far away — by the time it reaches us, most of it has spilled.&rdquo;</p>
+
+        <p>He closed the scroll and put it back in his sleeve.</p>
+
+        <p class="dialogue">&ldquo;Since the Buddha will not come to the east, I will go to the west. I will carry that bowl of water back again.&rdquo;</p>
+
+        <p>That night he packed his bags, took his horse by the lead, and slipped quietly out of the city. He did not look back.</p>
+
+        <p>The lamps of the Big Wild Goose Pagoda shrank behind him, bit by bit, until they were like a star that had fallen to earth.</p>
+
+        <div class="coda-lines">
+          <p>He walked west. The moon went before him, like a lamp lit for his sake.</p>
+          <p>He did not know what he would meet on the road, but he knew this — some roads must be walked by someone first.</p>
+        </div>
+
+      </article>
+    </main>
+
+    <!-- Culture notes -->
+    <section class="culture" aria-label="Culture notes">
+      <div class="culture-head"><h2>Culture Notes</h2></div>
+      <div class="facts">
+        <div class="fact">The monk on this phone case is Xuanzang, a master of the Tang dynasty. When he said &ldquo;If the Buddha will not go east, then I shall go west,&rdquo; he meant that he would not wait for the dharma to arrive in the east by itself — he would go west and seek the true scriptures himself.</div>
+        <div class="fact">The Big Wild Goose Pagoda was built in Chang'an under Xuanzang's supervision after his return from India, to house the scriptures and Buddha images he had brought back. He travelled for four years and fifty thousand li, returned with more than six hundred Buddhist texts, and spent the rest of his life translating them into Chinese.</div>
+        <div class="fact">Later, his story was written into <i>Journey to the West</i>. But the real Xuanzang had no Monkey King and no white dragon horse — only his own two feet, and the resolve in one sentence: &ldquo;I shall go west.&rdquo;</div>
+      </div>
+    </section>
+
+    <section class="coda" aria-label="Closing words">
+      <div class="mark">❖</div>
+      <p>Some roads must be walked by someone first.</p>
+    </section>
+
+    <footer class="colophon">
+      <span>&ldquo;The Vow to Go West · The Moon over Chang'an&rdquo; · Phone-case story · Illustrated page</span>
+      <span>Image source: the original document <a href="assets/phone-case.png" download="xixing-westward-phone-case.png">Download the full-resolution image</a></span>
+    </footer>
+
+  </div>
+</div>
+
+<button class="to-top" id="toTop" type="button" aria-label="Back to top">↑</button>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image">
+  <button class="close" id="lightboxClose" type="button" aria-label="Close">✕</button>
+  <img src="assets/phone-case.png" alt="The Vow to Go West phone case, enlarged">
+</div>
+
+<script>
+  (function(){
+    var img = document.getElementById('caseImg');
+    var box = document.getElementById('lightbox');
+    var closeBtn = document.getElementById('lightboxClose');
+    var toTop = document.getElementById('toTop');
+
+    function openBox(){ box.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeBox(){ box.classList.remove('open'); document.body.style.overflow = ''; }
+
+    img.addEventListener('click', openBox);
+    closeBtn.addEventListener('click', closeBox);
+    box.addEventListener('click', function(e){ if(e.target === box) closeBox(); });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && box.classList.contains('open')) closeBox();
+    });
+
+    function onScroll(){
+      if(window.scrollY > 400){ toTop.classList.add('show'); }
+      else { toTop.classList.remove('show'); }
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+
+    toTop.addEventListener('click', function(){
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  })();
+</script>
+
+</body>
+</html>
