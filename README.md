@@ -20,6 +20,14 @@
 | 中文版 | https://yutou1223.github.io/brick-kasaya/damo/zh/ |
 | 英文版 | https://yutou1223.github.io/brick-kasaya/damo/en/ |
 
+### 作品三 · 誓向西行 · 长安月 / The Vow to Go West
+
+| 用途 | 网址 |
+|---|---|
+| 双语入口（二维码指向这里） | https://yutou1223.github.io/brick-kasaya/xixing/ |
+| 中文版 | https://yutou1223.github.io/brick-kasaya/xixing/zh/ |
+| 英文版 | https://yutou1223.github.io/brick-kasaya/xixing/en/ |
+
 ## 双语跳转规则
 
 各作品的入口页读取 `navigator.languages`：
@@ -42,6 +50,11 @@ docs/                        ← GitHub Pages 发布目录
 │  ├─ qr/                    作品二二维码
 │  ├─ 404.html               找不到页面时回到入口
 │  └─ zh/  en/               作品二中文版 / 英文版（页面 + 图片资源 + 单文件版）
+├─ xixing/                   作品三
+│  ├─ index.html             作品三双语入口
+│  ├─ qr/                    作品三二维码
+│  ├─ 404.html               找不到页面时回到入口
+│  └─ zh/  en/               作品三中文版 / 英文版（页面 + 图片资源 + 单文件版）
 └─ 404.html                  全站 404 → 回到作品一入口
 standalone/                  作品一离线单文件版（图片已内嵌，不参与发布）
 ```
@@ -74,8 +87,9 @@ python tools/site_server.py --dir docs --port 8944
 
 - 作品一：陶土棕 + 麻绳米色，背景为 CSS 绘制的错缝**砖纹**肌理，正文首字下沉。
 - 作品二：琥珀金 + 沙漠黄，背景为 CSS 绘制的**流沙纹**肌理，引文用左侧色条块呈现。
+- 作品三：深藏蓝 + 中国红 + 描金，外围为 CSS 生成的夜空星点与云纹，内层是带三色描边的纸张面板，师徒对话用左侧金色细线 + 说话人小字呈现。
 
-两件作品的栅格完全一致：页面 1180px、图片卡 400px、正文栏 676px、栏间距 56px；英文版沿用相同的栅格、卡片尺寸与阴影，仅按拉丁字母调整字体栈与大标题字号。
+三件作品的栅格完全一致：页面 1180px、图片卡 400px、正文栏 676px、栏间距 56px；英文版沿用相同的栅格、卡片尺寸与阴影，仅按拉丁字母调整字体栈与大标题字号。（作品一为顶层站点，作品二、三为其子目录，三者的入口页互相链接。）
 
 ## 更新内容
 
