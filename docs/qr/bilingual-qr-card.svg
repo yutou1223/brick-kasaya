@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="900" height="1280" viewBox="0 0 900 1280">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#fdf8f1"/>
+      <stop offset="0.55" stop-color="#f8eee0"/>
+      <stop offset="1" stop-color="#f1e3d1"/>
+    </linearGradient>
+    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e5a279"/>
+      <stop offset="0.5" stop-color="#b04a26"/>
+      <stop offset="1" stop-color="#e5a279"/>
+    </linearGradient>
+    <pattern id="brick" width="148" height="64" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="66" height="26" fill="#b04a26" opacity="0.10"/>
+      <rect x="74" y="0" width="66" height="26" fill="#b04a26" opacity="0.10"/>
+      <rect x="0" y="32" width="66" height="26" fill="#b04a26" opacity="0.10"/>
+      <rect x="74" y="32" width="66" height="26" fill="#b04a26" opacity="0.10"/>
+    </pattern>
+    <radialGradient id="card" cx="0.5" cy="0" r="0.9">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.6" stop-color="#fdf9f3"/>
+      <stop offset="1" stop-color="#f5e9da"/>
+    </radialGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#4a1f14" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="1280" fill="url(#bg)"/>
+  <rect width="900" height="430" fill="url(#brick)"/>
+  <rect x="60" y="50" width="780" height="1180" rx="34" fill="url(#card)" stroke="#b04a26" stroke-opacity="0.16" filter="url(#soft)"/>
+
+  <text x="450" y="118" text-anchor="middle" font-family='"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Noto Sans SC","Segoe UI",sans-serif' font-size="19" letter-spacing="7" fill="#b04a26" font-weight="600">BILINGUAL · 双语</text>
+  <text x="450" y="196" text-anchor="middle" font-family='"Songti SC","STSong","Source Han Serif SC","Charter",Georgia,serif' font-size="56" font-weight="700" fill="#4a1f14">砖纹袈裟</text>
+  <text x="450" y="242" text-anchor="middle" font-family='"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Noto Sans SC","Segoe UI",sans-serif' font-size="23" fill="#8c3a20">The Brick-Pattern Kasaya</text>
+  <rect x="388" y="272" width="124" height="4" rx="2" fill="url(#rule)"/>
+
+  <rect x="174" y="364" width="552" height="552" rx="24" fill="#ffffff" stroke="#b04a26" stroke-opacity="0.16"/>
+  <image x="190" y="380" width="520" height="520" xlink:href="data:image/png;base64,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"/>
+
+  <text x="450" y="980" text-anchor="middle" font-family='"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Noto Sans SC","Segoe UI",sans-serif' font-size="27" fill="#6b2d1b">扫码自动识别语言 · 中文 / English</text>
+  <text x="450" y="1014" text-anchor="middle" font-family='"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Noto Sans SC","Segoe UI",sans-serif' font-size="20" fill="#8a7263">Scan to open the version that matches your phone&#39;s language</text>
+
+  <rect x="160" y="1050" width="580" height="56" rx="28" fill="#fdf3e8" stroke="#d97a4e" stroke-opacity="0.4"/>
+  <text x="450" y="1087" text-anchor="middle" font-family='"SFMono-Regular",Consolas,monospace' font-size="22" fill="#8c3a20">yutou1223.github.io/brick-kasaya/</text>
+
+  <text x="450" y="1156" text-anchor="middle" font-family='"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Noto Sans SC","Segoe UI",sans-serif' font-size="17" fill="#8a7263">zh-CN · zh-TW · zh-HK → 中文版　|　all other languages → English</text>
+  <text x="450" y="1200" text-anchor="middle" font-family='"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Noto Sans SC","Segoe UI",sans-serif' font-size="15" fill="#a8917f">永久固定网址 · Permanent URL · HTTPS</text>
+</svg>
