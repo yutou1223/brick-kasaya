@@ -1,8 +1,10 @@
-# 砖纹袈裟 · 信仰的现代传承 / The Brick-Pattern Kasaya
+# 图文作品集 / Illustrated Phone-Case Stories
 
-一份来自文档《砖纹袈裟-信仰的现代传承》的图文网页作品，含中文版、英文版与**跟随手机系统语言自动跳转**的双语二维码入口。
+一个 GitHub Pages 站点，收录来自文档的图文网页作品。每件作品都含**中文版、英文版**与**跟随手机系统语言自动跳转**的双语二维码入口，网址永久固定。
 
 ## 永久访问地址
+
+### 作品一 · 砖纹袈裟 · 信仰的现代传承 / The Brick-Pattern Kasaya
 
 | 用途 | 网址 |
 |---|---|
@@ -10,31 +12,43 @@
 | 中文版 | https://yutou1223.github.io/brick-kasaya/zh/ |
 | 英文版 | https://yutou1223.github.io/brick-kasaya/en/ |
 
+### 作品二 · 大漠孤行 · 长安月 / Solitary Journey Across the Desert
+
+| 用途 | 网址 |
+|---|---|
+| 双语入口（二维码指向这里） | https://yutou1223.github.io/brick-kasaya/damo/ |
+| 中文版 | https://yutou1223.github.io/brick-kasaya/damo/zh/ |
+| 英文版 | https://yutou1223.github.io/brick-kasaya/damo/en/ |
+
 ## 双语跳转规则
 
-`docs/index.html` 读取 `navigator.languages`：
+各作品的入口页读取 `navigator.languages`：
 
-- 任一项以 `zh` 开头（`zh`、`zh-CN`、`zh-Hans-CN`、`zh-TW`、`zh-HK` …）→ 进入中文版 `/zh/`
-- 其余所有语言（`en`、`ja`、`de`、`fr` …）→ 进入英文版 `/en/`
+- 任一项以 `zh` 开头（`zh`、`zh-CN`、`zh-Hans-CN`、`zh-TW`、`zh-HK` …）→ 进入中文版
+- 其余所有语言（`en`、`ja`、`de`、`fr` …）→ 进入英文版
 - 无语言信息时兜底进入英文版
 
-页面上另有「中文版 / English Version」手动按钮；手动选择会写入 `sessionStorage`，本次会话内不再被自动跳转覆盖。禁用 JavaScript 时由 `<noscript>` 的 meta refresh 兜底进入英文版。
+页面上另有「中文版 / English Version」手动按钮；手动选择会写入 `sessionStorage`，本次会话内不再被自动跳转覆盖。禁用 JavaScript 时由 `<noscript>` 的 meta refresh 兜底进入英文版。（预览路由页不跳转：在入口地址后加 `?stay=1`。）
 
 ## 目录结构
 
 ```
-docs/                      ← GitHub Pages 发布目录
-├─ index.html              双语入口（语言路由页，含二维码）
-├─ 404.html                找不到页面时回到入口
-├─ qr/                     二维码：1400px PNG、SVG、512px、256px
-├─ zh/                     中文版页面 + 图片资源
-└─ en/                     英文版页面 + 图片资源
-standalone/               离线单文件版（图片已内嵌，不参与发布）
+docs/                        ← GitHub Pages 发布目录
+├─ index.html                作品一双语入口（语言路由页，含二维码）
+├─ qr/                       作品一二维码：分享卡片 / 1400px / SVG / 512px / 256px
+├─ zh/  en/                  作品一中文版 / 英文版（页面 + 图片资源）
+├─ damo/                     作品二
+│  ├─ index.html             作品二双语入口
+│  ├─ qr/                    作品二二维码
+│  ├─ 404.html               找不到页面时回到入口
+│  └─ zh/  en/               作品二中文版 / 英文版（页面 + 图片资源 + 单文件版）
+└─ 404.html                  全站 404 → 回到作品一入口
+standalone/                  作品一离线单文件版（图片已内嵌，不参与发布）
 ```
 
 ## 二维码
 
-`docs/qr/` 下的文件全部指向双语入口，内容已用解码库反向校验：
+每个作品目录下的 `qr/` 都有一套，内容已用解码库反向校验，全部指向该作品的双语入口：
 
 | 文件 | 说明 |
 |---|---|
@@ -50,11 +64,22 @@ standalone/               离线单文件版（图片已内嵌，不参与发布
 
 ```powershell
 python tools/site_server.py --dir docs --port 8944
-# 打开 http://127.0.0.1:8944/
+# 打开 http://127.0.0.1:8944/          （作品一）
+# 打开 http://127.0.0.1:8944/damo/     （作品二）
 ```
 
-## 说明
+## 设计说明
 
-- 页面设计为暖色陶土 + 麻绳米色，背景含 CSS 绘制的错缝砖纹肌理，正文首字下沉，图片可点击放大。
-- 图片取自原始文档（889×1087），`<picture>` 优先加载体积更小的 JPEG 版本。
-- 英文版沿用与中文版完全相同的栅格、卡片尺寸、正文栏宽、配色与阴影，仅字体栈与标题字号按拉丁字母调整。
+两件作品共用同一套设计语言（暖色底纹 + 居中卡片 + 双栏图文 + 首字/引文块 + 结语通栏 + 图片点击放大），配色取自各自图片：
+
+- 作品一：陶土棕 + 麻绳米色，背景为 CSS 绘制的错缝**砖纹**肌理，正文首字下沉。
+- 作品二：琥珀金 + 沙漠黄，背景为 CSS 绘制的**流沙纹**肌理，引文用左侧色条块呈现。
+
+两件作品的栅格完全一致：页面 1180px、图片卡 400px、正文栏 676px、栏间距 56px；英文版沿用相同的栅格、卡片尺寸与阴影，仅按拉丁字母调整字体栈与大标题字号。
+
+## 更新内容
+
+```powershell
+# 本机无法直连 github.com:443，故用 GitHub API 推送
+tools\push-via-api.ps1 -Token <PAT> -Owner yutou1223 -Repo brick-kasaya -Root <站点目录> -RemotePathPrefix docs/damo
+```
